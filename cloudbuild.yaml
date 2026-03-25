@@ -18,7 +18,7 @@ steps:
 - name: 'gcr.io/cloud-builders/kubectl'  #
   args: ['apply', '-f', 'k8s/deployment.yaml'] # Command to apply the Kubernetes deployment configuration from the specified YAML file
   env:
-    - 'CLOUDSDK_COMPUTE_REGION=europe-west1'
+    - 'CLOUDSDK_COMPUTE_Zone=europe-west1-b'
     - 'CLOUDSDK_CONTAINER_CLUSTER=charan-gke-01'
 
 options:
