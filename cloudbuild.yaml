@@ -38,4 +38,4 @@ steps:
     - 'CLOUDSDK_CONTAINER_CLUSTER=charan-gke-01' # Name of the GKE cluster to deploy to
 
 options:
-  logging: CLOUD_LOGGING_ONLY
+  logsBucket: gs://charan-cloudbuild-logs
