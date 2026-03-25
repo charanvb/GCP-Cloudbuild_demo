@@ -37,5 +37,7 @@ steps:
     - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-b'
     - 'CLOUDSDK_CONTAINER_CLUSTER=charan-gke-01' # Name of the GKE cluster to deploy to
 
+logsBucket: gs://charan-cloudbuild-logs
+
 options:
-  logsBucket: gs://charan-cloudbuild-logs
+  logging: CLOUD_LOGGING_ONLY
