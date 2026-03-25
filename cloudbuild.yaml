@@ -11,7 +11,7 @@ steps:
     - flask-container=us-west1-docker.pkg.dev/citric-kit-489316-g6/charan-ar/banker-app1:latestd # New image to use for the container
  
   env:                       # Environment variables to specify the GKE cluster and region
-    - 'CLOUDSDK_COMPUTE_REGION=europe-west1'
+    - 'CLOUDSDK_COMPUTE_Zone=europe-west1-b'
     - 'CLOUDSDK_CONTAINER_CLUSTER=charan-gke-01' # Name of the GKE cluster to deploy to
  
 # Step 2: Apply deployment (only if first time or changes in YAML)  
