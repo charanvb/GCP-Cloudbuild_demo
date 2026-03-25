@@ -3,20 +3,35 @@
  
 steps:
 
-# Step 1: Apply deployment (only if first time or changes in YAML)  
+# 🔹 Step 1: Build Docker image
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+    - build
+    - -t
+    - us-west1-docker.pkg.dev/citric-kit-489316-g6/charan-ar/gbuildapp:latest
+    - .
+
+# 🔹 Step 2: Push image to Artifact Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+    - push
+    - us-west1-docker.pkg.dev/citric-kit-489316-g6/charan-ar/gbuildapp:latest
+
+
+# Step 3: Apply deployment (only if first time or changes in YAML)  
 - name: 'gcr.io/cloud-builders/kubectl'  #
   args: ['apply', '-f', 'k8s/deployment.yaml'] # Command to apply the Kubernetes deployment configuration from the specified YAML file
   env:
     - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-b'
     - 'CLOUDSDK_CONTAINER_CLUSTER=charan-gke-01'
 
-# Step 2: Deploy updated image to GKE cluster
+# Step 4: Deploy updated image to GKE cluster
 - name: 'gcr.io/cloud-builders/kubectl' #
   args:
     - set          # Command to set the image for the deployment
     - image        # Specifies the deployment and container to update with the new image  
     - deployment/charan-flask-deployment            # Name of the Kubernetes deployment to update  
-    - flask-container=us-west1-docker.pkg.dev/citric-kit-489316-g6/charan-ar/banker-app1:latestd # New image to use for the container
+    - flask-container=us-west1-docker.pkg.dev/citric-kit-489316-g6/charan-ar/gbuildapp:latest # New image to use for the container
  
   env:                       # Environment variables to specify the GKE cluster and region
     - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-b'
