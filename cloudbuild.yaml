@@ -20,3 +20,6 @@ steps:
   env:
     - 'CLOUDSDK_COMPUTE_REGION=europe-west1'
     - 'CLOUDSDK_CONTAINER_CLUSTER=charan-gke-01'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
