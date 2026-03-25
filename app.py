@@ -7,7 +7,7 @@ app = Flask(__name__)
  
 @app.route('/')  # Root route that returns a message indicating CI/CD to GKE is working
 def home():
-    return "CI/CD to GKE is Working!"
+    return "Hi Bamu girl, this is a test app..... smile :)"
  
 @app.route('/health')  # Health check route that returns an "OK" status with a 200 HTTP status code
 def health():
